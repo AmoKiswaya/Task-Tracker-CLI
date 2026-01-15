@@ -1,10 +1,7 @@
 from datetime import datetime
-import json
 
 
 class Task:
-    # task_id = 0
-
 
     def __init__(self, description="", tasks=None, status="todo", *args, **kwargs):
         self.id = self.task_id_generate(tasks) 
@@ -26,6 +23,16 @@ class Task:
         ]
         return max(ids, default=0) + 1
     
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(
+            task_id=data["id"],
+            description=data.get("description", ""),
+            status=data.get("status", "todo"),
+            created_at=data.get("createdAt"),
+            updated_at=data.get("updatedAt")
+        )
 
     def to_dict(self):
         """
@@ -51,3 +58,7 @@ class Task:
             self.status = status
 
         self.updatedAt = datetime.now().strftime("%Y-%m-%dT%H:%M:%S") 
+
+
+    def __str__(self) -> str:
+        return f"[{self.id}] {self.description} ({self.status})"
