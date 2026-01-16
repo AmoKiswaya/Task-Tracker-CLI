@@ -22,7 +22,7 @@ class TaskManager:
                 task_list = json.load(file)
                 for task_id, task_data in task_list.items():
                     task_obj = Task.from_dict(task_data)
-                    self._tasks[int(task_obj.id)] = task_obj
+                    self._tasks[int(task_id)] = task_obj
         except FileNotFoundError:
             self._tasks = {}
         except json.JSONDecodeError:
