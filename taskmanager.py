@@ -5,7 +5,6 @@ class TaskManager:
     __file_path = "tasks.json"
 
     class Options:
-        all = "all"
         done = "done"
         todo = "todo"
         in_progress = "in-progress"
@@ -79,22 +78,26 @@ class TaskManager:
         del self._tasks[task_id]
 
         self.save_tasks()
-        # with open(TaskManager.__file_path, "r") as file:
-        #     task_file = json.load(file)
-        #     for task_id, task_data in task_file.items():
-        #         if index == task_data.id:
-        #             del task_file[task_id]
-        #         raise ValueError("Task not found!")
 
 
+    def list_tasks(self, status=None):
+        """Return tasks, optionally filtered by status"""
 
-    def list_tasks(self):
-        pass 
+        if not self._tasks:
+            return []
+        if status is None:
+            return list(self._tasks.values()) 
+        
+        return [
+            task for task in self._tasks.values()
+            if task.status == status
+        ]
+    
+        
 
     def save_tasks(self):
-        """
-        Save tasks to JSON file.
-        """
+        """Save tasks to JSON file."""
+
         data = {}
 
         for task_id, task in self._tasks.items():
