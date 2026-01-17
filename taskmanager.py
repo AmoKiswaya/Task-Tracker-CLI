@@ -53,6 +53,22 @@ class TaskManager:
         self.save_tasks()
         return task
 
+    def update_task(self, task_id: int, description=None, status=None):
+        """
+        Update an existing task and persist changes.
+        """
+        task = self._tasks.get(task_id)
+
+        if not task:
+            raise ValueError(f"Task with id {task_id} does not exist")
+
+        task.update(description=description, status=status)
+
+        self.save_tasks()
+
+        return task
+
+
     def delete_task(self, index):
         pass
 
