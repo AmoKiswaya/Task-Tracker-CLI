@@ -69,8 +69,24 @@ class TaskManager:
         return task
 
 
-    def delete_task(self, index):
-        pass
+    def delete_task(self, task_id: int):
+        """
+        Delete a task by ID and persist the change.
+        """
+
+        if task_id not in self._tasks:
+            raise ValueError(f"Task with id {task_id} not found")
+        del self._tasks[task_id]
+
+        self.save_tasks()
+        # with open(TaskManager.__file_path, "r") as file:
+        #     task_file = json.load(file)
+        #     for task_id, task_data in task_file.items():
+        #         if index == task_data.id:
+        #             del task_file[task_id]
+        #         raise ValueError("Task not found!")
+
+
 
     def list_tasks(self):
         pass 
