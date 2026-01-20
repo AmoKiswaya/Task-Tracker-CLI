@@ -36,10 +36,6 @@ class TaskManager:
             return 1
         return max(self._tasks.keys()) + 1
         
-        # ids = [
-        #     task["id"] for task in tasks if isinstance(task.get("id"), int)
-        # ]
-        # return max(ids, default=0) + 1
 
 
     def add_task(self, description: str):
