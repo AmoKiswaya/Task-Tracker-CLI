@@ -3,7 +3,7 @@ from taskmanager import TaskManager
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="TaskTrackerCLI"
+        prog="TaskTrackerCLI",
         description="Task Tracker CLI for managing tasks through the terminal"
     )
 
