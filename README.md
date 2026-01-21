@@ -11,4 +11,7 @@ This project is not yet published to PyPI.
 ```bash
 git clone https://github.com/AmoKiswaya/Task-Tracker-CLI.git
 cd Task-Tracker-CLI
-pip install .
+pip install . 
+
+## Usage
+# Add a new task
