@@ -5,4 +5,10 @@ Task Tracker CLI is a command line interface built in python for managing tasks 
 
 ## Installation
 
+This project is not yet published to PyPI.
 
+### Install from source
+```bash
+git clone https://github.com/AmoKiswaya/Task-Tracker-CLI.git
+cd Task-Tracker-CLI
+pip install .
