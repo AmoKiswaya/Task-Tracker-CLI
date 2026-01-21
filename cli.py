@@ -1,5 +1,10 @@
 import argparse
+import json
 from taskmanager import TaskManager 
+
+
+def print_json(data):
+    print(json.dumps(data, indent=4))
 
 def main():
     parser = argparse.ArgumentParser(
@@ -11,12 +16,22 @@ def main():
 
     add_parser = subparsers.add_parser("add", help="Add a new task")
     add_parser.add_argument("description", help="Task description") 
+    add_parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Output tasks as JSON"
+    )
 
     list_parser = subparsers.add_parser("list", help="List tasks")
     list_parser.add_argument(
         "--status",
         choices=["todo", "in-progress", "done"],
         help="Filter tasks by status"
+    )
+    list_parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Output tasks as JSON"
     )
 
     update_parser = subparsers.add_parser("update", help="Update a task")
@@ -25,6 +40,11 @@ def main():
     update_parser.add_argument(
         "--status",
         choices=["todo", "in-progress", "done"]
+    )
+    update_parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Output task as JSON"
     )
 
     delete_parser = subparsers.add_parser("delete", help="Delete a task")
@@ -37,12 +57,21 @@ def main():
         task = manager.add_task(args.description)
         print(f"Added task: {task}") 
 
+        if args.json:
+            print_json(task.to_dict())
+        else:
+            print(f"Added: {task}")
+
     elif args.command == "list":
         tasks = manager.list_tasks(args.status)
-        if not tasks:
-            print("No tasks found.") 
-        for task in tasks:
-            print(task)
+
+        if args.json:
+            print_json([task.to_dict() for task in tasks])
+        else:    
+            if not tasks:
+                print("No tasks found.") 
+            for task in tasks:
+                print(task)
 
     elif args.command == "update":
         task = manager.update_task(
@@ -50,7 +79,11 @@ def main():
             description=args.description,
             status=args.status
         )
-        print(f"Updated task: {task}") 
+        
+        if args.json:
+            print_json(task.to_dict())
+        else:   
+            print(f"Updated task: {task}") 
 
     elif args.command == "delete":
         manager.delete_task(args.id)
