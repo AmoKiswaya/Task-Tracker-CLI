@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta:__legacy__"
+
+[project]
+name = "task-tracker"
+version = "0.1.0"
+description = "A simple, extensible CLI task tracker"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "Amos Kiswaya"}
+]
+keywords = ["cli", "tasks"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Environment :: Console",
+    "Operating System :: OS Independent"
+] 
+
+[project.scripts]
+task-tracker = "task_tracker.cli:main"
