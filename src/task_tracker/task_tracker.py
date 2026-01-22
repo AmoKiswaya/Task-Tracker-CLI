@@ -54,4 +54,4 @@ class Task:
 
 
     def __str__(self) -> str:
-        return f"[{self.id}] {self.description} ({self.status})"
+        return f"ID: {self.id}\nDescription: {self.description}\nStatus: {self.status}"

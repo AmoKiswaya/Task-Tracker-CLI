@@ -46,6 +46,7 @@ class TaskManager:
         task = Task(task_id=new_id, description=description)
         self._tasks[new_id] = task
         self.save_tasks()
+
         return task
 
     def update_task(self, task_id: int, description=None, status=None):

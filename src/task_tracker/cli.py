@@ -55,12 +55,12 @@ def main():
 
     if args.command == "add":
         task = manager.add_task(args.description)
-        print(f"Added task: {task}") 
+        print("\n✅ Task successfully added!") 
 
         if args.json:
             print_json(task.to_dict())
         else:
-            print(f"Added: {task}")
+            print(task)
 
     elif args.command == "list":
         tasks = manager.list_tasks(args.status)
