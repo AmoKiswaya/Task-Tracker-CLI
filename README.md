@@ -12,6 +12,14 @@ This project is not yet published to PyPI.
 git clone https://github.com/AmoKiswaya/Task-Tracker-CLI.git
 cd Task-Tracker-CLI
 pip install . 
+```
 
 ## Usage
+```bash
 # Add a new task
+task-tracker add "Visit bookstore"
+# Output
+✅ Task successfully added!
+ID: 8
+Description: Visit bookstore
+Status: todo
