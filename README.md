@@ -3,15 +3,13 @@
 Task Tracker CLI is a command line interface built in python for managing tasks via the terminal. Arguments such as "add" for adding tasks, "list" for listing tasks optionally filtered by status, "update" for updating an exisiting task based and "delete" for deleting a task by ID. 
 
 
-## Installation
+### Development Installation
 
-This project is not yet published to PyPI.
-
-### Install from source
+For development, install in editable mode:
 ```bash
 git clone https://github.com/AmoKiswaya/Task-Tracker-CLI.git
 cd Task-Tracker-CLI
-pip install . 
+pip install -e . 
 ```
 
 ## Usage
