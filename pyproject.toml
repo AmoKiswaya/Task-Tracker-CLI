@@ -21,3 +21,6 @@ classifiers = [
 
 [project.scripts]
 task-tracker = "task_tracker.cli:main"
+
+[tool.setuptools]
+packages = ["task_tracker"]
