@@ -2,7 +2,6 @@ import argparse
 import json
 from task_tracker.taskmanager import TaskManager 
 
-
 def print_json(data):
     print(json.dumps(data, indent=4))
 
