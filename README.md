@@ -23,3 +23,11 @@ task-tracker add "Visit bookstore"
 ID: 8
 Description: Visit bookstore
 Status: todo
+
+# Update a task
+task-tracker update 1 -d "Visit Paris" -s done
+# Output
+✅ Task 1 updated successfully
+Updated task: ID: 1
+Description: Visit Paris
+Status: done

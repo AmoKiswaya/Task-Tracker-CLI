@@ -56,8 +56,8 @@ class TaskManager:
         task = self._tasks.get(task_id)
 
         if not task:
-            raise ValueError(f"Task with id {task_id} does not exist")
-
+            raise ValueError(f"❌ Task with id {task_id} does not exist")
+        
         task.update(description=description, status=status)
 
         self.save_tasks()

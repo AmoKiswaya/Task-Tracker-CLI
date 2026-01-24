@@ -36,12 +36,15 @@ def main():
 
     update_parser = subparsers.add_parser("update", help="Update a task")
     update_parser.add_argument("id", type=int, help="Task ID")
-    update_parser.add_argument("--description", help="New description")
+    update_parser.add_argument("-d", "--description", type=str, help="New description")
     update_parser.add_argument(
+        "-s",
         "--status",
+        type=str,
         choices=["todo", "in-progress", "done"]
     )
     update_parser.add_argument(
+        "-j",
         "--json",
         action="store_true",
         help="Output task as JSON"
@@ -74,11 +77,16 @@ def main():
                 print(task)
 
     elif args.command == "update":
-        task = manager.update_task(
-            args.id,
-            description=args.description,
-            status=args.status
-        )
+        try:
+            task = manager.update_task(
+                args.id,
+                description=args.description,
+                status=args.status
+            )
+            print(f"✅ Task {task.id} updated successfully")
+        except ValueError as e:
+            print(e)
+            return
         
         if args.json:
             print_json(task.to_dict())
