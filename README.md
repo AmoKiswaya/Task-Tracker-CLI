@@ -9,6 +9,17 @@ For development, install in editable mode:
 ```bash
 git clone https://github.com/AmoKiswaya/Task-Tracker-CLI.git
 cd Task-Tracker-CLI
+```
+## Create virtual environment and activate it
+```bash
+# Create environment
+python3 -m venv < environment-name >
+
+# Activate environment
+source < environment-name >/bin/activate
+```
+## Install dependencies
+```bash
 pip install -e . 
 ```
 
