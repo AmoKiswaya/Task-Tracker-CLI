@@ -24,6 +24,7 @@ def main():
     list_parser = subparsers.add_parser("list", help="List tasks")
     list_parser.add_argument(
         "--status",
+        type=str, 
         choices=["todo", "in-progress", "done"],
         help="Filter tasks by status"
     )
@@ -93,8 +94,15 @@ def main():
             print(f"Updated task: {task}") 
 
     elif args.command == "delete":
-        manager.delete_task(args.id)
-        print(f"Deleted task {args.id}")
+        # manager.delete_task(args.id)
+        # print(f"Deleted task {args.id}")
+
+        try:
+            task = manager.delete_task(args.id)
+            print(f"✅ Task {task.id} deleted successfully")
+        except ValueError as e:
+            print(e)
+            
 
     else:
         parser.print_help() 

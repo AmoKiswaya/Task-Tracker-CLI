@@ -29,3 +29,25 @@ task-tracker update 1 -d "Visit Paris" -s done
 Updated task: ID: 1
 Description: Visit Paris
 Status: done
+
+# List all tasks 
+task-tracker list 
+# Output
+Status: todo
+ID: 8
+Description: Visit bookstore
+Status: done
+ID: 1
+Description: Visit Paris
+
+# List tasks filtered by status
+task-tracker list  --status todo
+# Output
+Status: todo
+ID: 8
+Description: Visit bookstore
+
+# Delete a task
+task-tracker delete 8
+# Output
+Deleted task 8 

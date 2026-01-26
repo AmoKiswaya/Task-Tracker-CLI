@@ -62,7 +62,7 @@ class TaskManager:
 
         self.save_tasks()
 
-        return task
+        return task 
 
 
     def delete_task(self, task_id: int):
@@ -71,25 +71,21 @@ class TaskManager:
         """
 
         if task_id not in self._tasks:
-            raise ValueError(f"Task with id {task_id} not found")
+            raise ValueError(f"❌ Task with id {task_id} not found")
+        
+        task = self._tasks[task_id]
         del self._tasks[task_id]
-
         self.save_tasks()
+        return task
 
 
     def list_tasks(self, status=None):
         """Return tasks, optionally filtered by status"""
 
-        if not self._tasks:
-            return []
-        if status is None:
-            return list(self._tasks.values()) 
-        
-        return [
-            task for task in self._tasks.values()
-            if task.status == status
-        ]
-    
+        tasks = self._tasks.values()
+        if status:
+            tasks = (t for t in tasks if t.status == status)
+        return list(tasks) 
         
 
     def save_tasks(self):
